@@ -1,7 +1,19 @@
-## Put comments here that give an overall description of what your
-## functions do
+## This is my response for Programming Assignment 2.
+## The functions in this file will create an object that can cache
+## a matrix and its inverse.
 
-## Write a short comment describing this function
+## example usage: (using the hilbert function from the man page for solve())
+## > hilbert <- function(n) { i <- 1:n; 1 / outer(i - 1, i, "+") }
+## > h8 <- hilbert(8);
+## > my_matrix <- makeCacheMatrix(h8)
+## > cacheSolve(my_matrix)
+
+## The first call should return the inverse.  Subsequent calls will print
+## "getting cached data" before returning the inverse
+
+## makeCachematrix is the "constructor" for the object.  Pass in a square matrix
+## to be stored.  use $get and $set to change the value.  $getinv and $setinv to 
+## get and set the inverse
 
 makeCacheMatrix <- function(x = matrix()) {
   # cache for the inverse of the matrix
@@ -22,7 +34,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## cacheSolve calls solve() to get the inverse of a matrix that was saved using
+## makeCacheMatrix(). 
+## after the first time the function is called, the inverse will be cached so it 
+## is not computed in subsequent calls.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
